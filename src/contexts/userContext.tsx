@@ -71,6 +71,7 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     try {
       const response = await Api.post<IUserLoginResponse>("/login", data);
       localStorage.setItem("@TOKEN", response.data.accessToken);
+      console.log(response.data.accessToken);
       localStorage.setItem("@USERID", JSON.stringify(response.data.user.id));
       setUser(response.data.user);
       toast.success("Login realizado com sucesso!", { autoClose: 2500 });
